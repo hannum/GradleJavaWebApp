@@ -1,1 +1,1 @@
-web: gradle appRun
+web: ./gradlew appRun
