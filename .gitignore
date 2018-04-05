@@ -1,0 +1,30 @@
+# Java
+*.class
+*.ctxt
+*.ear
+*.jar
+*.log
+*.rar
+*.tar.gz
+*.war
+*.zip
+.mtj.tmp/
+hs_err_pid*
+MANIFEST.MF
+
+# NetBeans
+.nb-gradle/
+build/
+dist/
+nb-build.xml
+nbbuild/
+nbdist/
+nbproject/
+
+# Gradle
+!gradle-wrapper.jar
+.gradle
+.gradletasknamecache
+build/
+gradle-app.setting
+gradle/wrapper/gradle-wrapper.properties
