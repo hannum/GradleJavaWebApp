@@ -14,7 +14,7 @@ MANIFEST.MF
 
 # NetBeans
 .nb-gradle/
-build/
+.nb-gradle-properties
 dist/
 nb-build.xml
 nbbuild/
@@ -22,9 +22,7 @@ nbdist/
 nbproject/
 
 # Gradle
-!gradle-wrapper.jar
 .gradle
-.gradletasknamecache
+
+#Build files
 build/
-gradle-app.setting
-gradle/wrapper/gradle-wrapper.properties
