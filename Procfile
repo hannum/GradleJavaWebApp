@@ -1,1 +1,1 @@
-web: java -jar build/server/jetty-runner.jar build/libs/GradleJavaWebApp.war
+web: java -jar build/server/webapp-runner.jar --port $PORT build/libs/GradleJavaWebApp.war
