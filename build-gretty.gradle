@@ -8,28 +8,11 @@
 
 plugins {
     id 'war'
+    id "org.gretty" version "2.1.0"
 }
-
-//Copy the embedded servlet container into build
-task copyToLib(type: Copy) {
-    into "$buildDir/server"
-    from(configurations.compileOnly) {
-        include "jetty-runner*"
-        //include "webapp-runner*"
-    }
-}
-
-//Stage task is required for deploying to Heroku
-task stage {
-    dependsOn clean, war, copyToLib 
-}
-war.mustRunAfter clean
 
 dependencies {
     providedCompile 'javax.servlet:javax.servlet-api:3.1.0'
-    compileOnly 'org.eclipse.jetty:jetty-runner:9.4.9.v20180320'
-    //compile 'com.github.jsimone:webapp-runner:8.5.29.0'   //Tomcat has issues with WebServlet annotation
-   
     testCompile 'junit:junit:4.12'
 }
 

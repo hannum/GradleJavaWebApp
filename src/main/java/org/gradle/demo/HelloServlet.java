@@ -21,7 +21,7 @@ import javax.servlet.http.HttpServletResponse;
 public class HelloServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
         throws ServletException, IOException {
-        response.getWriter().print("Hello, World!");  
+        response.getWriter().print("Hello there, World!");  
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
