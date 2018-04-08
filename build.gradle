@@ -13,10 +13,10 @@ plugins {
 //Copy the embedded servlet container into build
 task copyToLib(type: Copy) {
     into "$buildDir/server"
-    from(configurations.compileOnly) {
-        include "jetty-runner*"
-        //include "webapp-runner*"
-        rename { String fileName -> "jetty-runner.jar"   
+    from(configurations.compile) {
+        //include "jetty-runner*"
+        include "webapp-runner*"
+        rename { String fileName -> "webapp-runner.jar"   
         }
     }
 }
@@ -29,8 +29,8 @@ war.mustRunAfter clean
 
 dependencies {
     providedCompile 'javax.servlet:javax.servlet-api:3.1.0'
-    compileOnly 'org.eclipse.jetty:jetty-runner:9.4.9.v20180320'
-    //compileOnly 'com.github.jsimone:webapp-runner:8.5.29.0'
+    //compileOnly 'org.eclipse.jetty:jetty-runner:9.4.9.v20180320'
+    compile 'com.github.jsimone:webapp-runner:8.5.29.0'
    
     testCompile 'junit:junit:4.12'
 }
