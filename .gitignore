@@ -1,28 +1,15 @@
-# Java
-*.class
-*.ctxt
-*.ear
-*.jar
-*.log
-*.rar
-*.tar.gz
-*.war
-*.zip
-.mtj.tmp/
-hs_err_pid*
-MANIFEST.MF
 
 # NetBeans
 .nb-gradle/
-.nb-gradle-properties
-dist/
-nb-build.xml
-nbbuild/
-nbdist/
-nbproject/
 
-# Gradle
+# Gradle files
 .gradle
 
-#Build files
+#Gradle build files, contains also jetty-runner
 build/
+
+#Webapp runner (Tomcat) build files
+target/
+
+#Log files
+logs/
