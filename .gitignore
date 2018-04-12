@@ -3,7 +3,7 @@
 .nb-gradle/
 
 # Gradle files
-.gradle
+.gradle/
 
 #Gradle build files, contains also jetty-runner
 build/
