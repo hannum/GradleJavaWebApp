@@ -1,9 +1,11 @@
 language: java
 jdk: oraclejdk8
-//Add execute permission to gradlew so that Travis CI can run it
+
+#Add execute permission to gradlew so that Travis CI can run it
 before_install:
  - chmod +x gradlew
  
+#Avoid uploading the Gradle dependencies to cache at each build
 before_cache:
   - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
   - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
