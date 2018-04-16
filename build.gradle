@@ -1,6 +1,11 @@
-
 plugins {
+    id 'com.gradle.build-scan' version '1.13.1'
     id 'war'
+}
+
+buildScan {
+    licenseAgreementUrl = 'https://gradle.com/terms-of-service'
+    licenseAgree = 'yes'
 }
 
 //Copy the embedded servlet container into build
@@ -22,10 +27,65 @@ war.mustRunAfter clean
 
 dependencies {
     providedCompile 'javax.servlet:javax.servlet-api:3.1.0'
-    compileOnly 'org.eclipse.jetty:jetty-runner:9.4.9.v20180320'
+    //compileOnly 'org.eclipse.jetty:jetty-runner:9.4.9.v20180320'
+    compileOnly 'org.eclipse.jetty:jetty-runner:9.4.10.RC0'
     //compileOnly 'com.github.jsimone:webapp-runner:8.5.29.0'
     testCompile 'junit:junit:4.12'
 }
+
+test {
+    doFirst {
+        logger.quiet("----------------------\nEntering unit tests...")
+    }
+    
+    beforeTest{ descr ->
+        logger.quiet("--Starting Test ${descr.className} : ${descr.name}")
+    }
+    
+	ignoreFailures = true
+    outputs.upToDateWhen {false}    //Re-run tests always
+}
+
+sourceSets {  
+    integTest {
+        java.srcDir file('src/integTest/java')
+        resources.srcDir file('src/integTest/resources')
+    }
+}
+
+task integTest(type: Test) {  
+    testClassesDirs = sourceSets.integTest.output.classesDirs
+    classpath = sourceSets.integTest.runtimeClasspath
+    
+    doFirst {
+        logger.quiet("----------------------\nEntering integration tests...")
+    }
+    
+    beforeTest{ descr ->
+        logger.quiet("--Starting Test ${descr.className} : ${descr.name}")
+    }
+    
+    mustRunAfter {test}
+    
+    outputs.upToDateWhen {false}    //Re-run tests always
+    ignoreFailures = true
+}
+
+check.dependsOn integTest  
+
+dependencies {
+    //Provide classes from main and testsource sets
+    integTestCompile sourceSets.main.output
+    integTestCompile sourceSets.test.output
+    //Provide dependencies for compile and runtime
+    integTestCompile configurations.testCompile
+    integTestRuntime configurations.testRuntime
+}
+
+task allTests{
+    dependsOn test, integTest
+}
+
 
 // In this section you declare where to find the dependencies of your project
 repositories {

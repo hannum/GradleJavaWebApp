@@ -5,6 +5,9 @@ jdk: oraclejdk8
 before_install:
  - chmod +x gradlew
  
+ script:
+  - ./gradlew integTest --scan -s
+ 
 #Avoid uploading the Gradle dependencies to cache at each build
 before_cache:
   - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
