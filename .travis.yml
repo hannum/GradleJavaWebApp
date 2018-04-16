@@ -5,8 +5,9 @@ jdk: oraclejdk8
 before_install:
  - chmod +x gradlew
  
- script:
-  - ./gradlew integTest --scan -s
+install: true
+script:
+  - ./gradlew integTest
  
 #Avoid uploading the Gradle dependencies to cache at each build
 before_cache:
