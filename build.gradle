@@ -65,14 +65,13 @@ task integTest(type: Test) {
         logger.quiet("--Starting Test ${descr.className} : ${descr.name}")
     }
     
-    mustRunAfter {test}
+    mustRunAfter(test)
     
     outputs.upToDateWhen {false}    //Re-run tests always
     ignoreFailures = true
 }
 
-check.dependsOn integTest  
-
+//Dependencies for the integration test task
 dependencies {
     //Provide classes from main and testsource sets
     integTestCompile sourceSets.main.output
@@ -81,6 +80,7 @@ dependencies {
     integTestCompile configurations.testCompile
     integTestRuntime configurations.testRuntime
 }
+check.dependsOn integTest  
 
 task allTests{
     dependsOn test, integTest
