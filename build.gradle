@@ -42,7 +42,7 @@ test {
         logger.quiet("--Starting Test ${descr.className} : ${descr.name}")
     }
     
-	ignoreFailures = true
+	//ignoreFailures = true
     outputs.upToDateWhen {false}    //Re-run tests always
 }
 
@@ -68,7 +68,7 @@ task integTest(type: Test) {
     mustRunAfter(test)
     
     outputs.upToDateWhen {false}    //Re-run tests always
-    ignoreFailures = true
+    //ignoreFailures = true
 }
 
 //Dependencies for the integration test task
