@@ -12,6 +12,6 @@ package org.gradle.demo;
 public class Greeter {
     public String greet(String name) {
         if (name == null) name = "World";
-        return "Hello to you, " + name;
+        return "Hello to you, " + name + "!";
     }
 }

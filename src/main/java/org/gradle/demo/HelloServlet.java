@@ -29,7 +29,7 @@ public class HelloServlet extends HttpServlet {
         throws ServletException, IOException {
         Greeter greeter = new Greeter();
         String name = request.getParameter("name");
-        request.setAttribute("user", greeter.greet(name));
+        request.setAttribute("message", greeter.greet(name));
         request.getRequestDispatcher("response.jsp").forward(request, response);
     }
 }
