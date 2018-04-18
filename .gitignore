@@ -1,6 +1,7 @@
 
 # NetBeans
 .nb-gradle/
+nbproject/
 
 # Gradle files
 .gradle/
