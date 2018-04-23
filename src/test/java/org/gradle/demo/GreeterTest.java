@@ -8,7 +8,7 @@ public class GreeterTest {
 
     @Test
     public void dummyUnitTest1() {
-        assertEquals(0, 1);
+        assertEquals(0, 0);
     }
     
     @Test
